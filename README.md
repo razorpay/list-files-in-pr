@@ -6,10 +6,10 @@ The output will be available via the `steps` output context.
 
 ## Usage
 
-Check the [actions.yml](https://github.com/ankitjain28may/list-files-in-pr/blob/master/action.yml) for the complete format of the required inputs and outputs.
+Check the [actions.yml](https://github.com/razorpay/list-files-in-pr/blob/master/action.yml) for the complete format of the required inputs and outputs.
 
 ```yaml
-  - uses: ankitjain28may/list-files-in-pr@v1.0
+  - uses: razorpay/list-files-in-pr@v1.0
     with:
       githubToken: ${{ github.token }}
       outputFormat: 'json' # It can be csv, new-line, space-delimited as well. default is json
@@ -18,7 +18,7 @@ Check the [actions.yml](https://github.com/ankitjain28may/list-files-in-pr/blob/
 ### Get the list of files in a PR
 
 ```yaml
-  - uses: ankitjain28may/list-files-in-pr@v1.0
+  - uses: razorpay/list-files-in-pr@v1.0
     id: list-files
     with:
       githubToken: ${{ github.token }}
