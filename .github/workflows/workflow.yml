@@ -1,12 +1,25 @@
 name: Builds and tests Workflow
 on: [push, pull_request]
+
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Set up Package Manager Guard
+        uses: safedep/pmg@v1
+        with:
+          server-mode: true
+          api-key: ${{ secrets.SAFEDEP_API_KEY }}
+          tenant-id: ${{ secrets.SAFEDEP_TENANT_ID }}
       - name: npm install
         run: npm ci
       - name: npm eslint
         run: npm run lint
+      - name: Enforce PMG policy
+        if: always()
+        run: pmg proxy stop --fail-on-violation
